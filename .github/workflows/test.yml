@@ -29,6 +29,6 @@ jobs:
       - name: codecov
         uses: codecov/codecov-action@v2.1.0
         with:
-          token: facc4aa0-49ea-4f1b-b4ff-2c3cf09f5f0c
-          file: build/coverage.info      
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: build/coverage.html
    
