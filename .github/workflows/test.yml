@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Dump GitHub context
+        id: github_context_step
+        run: |
+         brew install lcov
+         chmod +x make_all.sh
+         ./make_all.sh
+      - name: codecov
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          token: facc4aa0-49ea-4f1b-b4ff-2c3cf09f5f0c
+          file: build/coverage.info      
+   
