@@ -28,7 +28,6 @@ make
 
 cd ../
 
-
 COVERAGE_FILE=coverage.info
 REPORT_FOLDER=coverage_report
 lcov --rc lcov_branch_coverage=1 -c -d build -o ${COVERAGE_FILE}_tmp
